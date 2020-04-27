@@ -2,7 +2,7 @@ function getBooks(){
 
 var colletion = document.getElementById('books_collection')
 //colletion.remove()
-
+console.log('hello')
 
 const book = document.getElementById('search').value
 
