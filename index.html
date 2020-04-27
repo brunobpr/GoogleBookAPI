@@ -5,23 +5,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Ghibli</title>
+    <title>Bruno Ribeiro - 2017138</title>
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/materialize.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="scripts/search.js" ></script>
+    <script src="scripts/search.js"></script>
     <script src="scripts/advancedSearch.js" type="text/JavaScript"></script>
     <script src="scripts/materialize.js" type="text/JavaScript"></script>
 </head>
 
 <body style='background-image: brown'>
     <img src="https://c.pxhere.com/photos/a5/56/book_darkness_book_in_the_dark_black_and_white_nikon-1205380.jpg!d"
-    alt="" style="position:absolute; width:100%;"/>
+        alt="" style="position:absolute; width:100%;" />
     <script>
-       
+
         M.AutoInit();
     </script>
     <nav>
@@ -42,48 +42,51 @@
 
     <div class="row">
         <div id="simpleform">
-            <form style="margin-bottom: -200px; padding-bottom: -200px" class="col s10" onsubmit="getBooks(); return false;">
+            <form style="margin-bottom: -200px; padding-bottom: -200px" class="col s10"
+                onsubmit="getBooks(); return false;">
                 <div class="input-field col s8">
                     <input id="search" type="text" class="validate white-text " required="true">
                     <label for="search">Search for a book</label>
                     <button type="submit" class="btn waves-effect waves-light">Search</button>
                 </div>
-           
             </form>
         </div>
-            <form id="advancedform" style="visibility:hidden" class="col s10" onsubmit="getBook(); return false;">
-                <div class="input-field col s6">
-                    <input id="title" type="text" class="validate white-text ">
-                    <label for="title">Title</label>
-                    <button type="submit" class="btn waves-effect waves-light">Search</button>
-                </div>
-                <div class="input-field col s6">
-                    <input id="author" type="text" class="validate white-text ">
-                    <label for="author">Author</label>
-                   
-                </div>
-            </form>
-       
-        </div>
-
-
-
+        <form id="advancedform" style="visibility:hidden" class="col s10" onsubmit="getBook(); return false;">
+            <div class="input-field col s6">
+                <input id="title" type="text" class="validate white-text ">
+                <label for="title">Title</label>
+                <button type="submit" class="btn waves-effect waves-light">Search</button>
+            </div>
+            <div class="input-field col s6">
+                <input id="author" type="text" class="validate white-text ">
+                <label for="author">Author</label>
+            </div>
+        </form>
         
     </div>
     <div class="row">
+        
         <label class="col s3">
             <input type="checkbox" class="filled-in" onclick="advancedForm()" id="checkBox" />
             <span>Advanced Search</span>
         </label>
-        <ul class="collapsible collection col s7" style="list-style: none;" id="books_collection">
-
-
-        </ul>
-        <script>
-            M.AutoInit();
-        </script>
+        <ul class="collapsible collection col s7" style="list-style: none;" id="books_collection"></ul>
     </div>
-   
+    <div class="row">
+        <ul class="pagination col s12">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+    </div>
+    <script>
+        M.AutoInit();
+    </script>
+
 </body>
 
 </html>

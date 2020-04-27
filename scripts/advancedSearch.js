@@ -6,25 +6,24 @@ function advancedForm() {
     document.getElementById('simpleform').style.visibility = 'visible';
     document.getElementById('advancedform').style.visibility = 'hidden';
   }
-  console.log('condas')
 }
 
 function getBook() {
   var colletion = document.getElementById('books_collection')
   const titleInput = document.getElementById('title').value
-  const authorInput =  document.getElementById('author').value
-  var url =""
-  if(titleInput != "" && authorInput != ""){
-     url = 'https://www.googleapis.com/books/v1/volumes?q=+intitle:' +  titleInput +'+inauthor:'+authorInput +'&key=AIzaSyCfxVfRWs5eLZEwwiZemvp1iAwyAaHBHUQ'
+  const authorInput = document.getElementById('author').value
+  var url = ""
+  if (titleInput != "" && authorInput != "") {
+    url = 'https://www.googleapis.com/books/v1/volumes?q=+intitle:' + titleInput + '+inauthor:' + authorInput + '&key=AIzaSyCfxVfRWs5eLZEwwiZemvp1iAwyAaHBHUQ'
   }
-    if(authorInput == ""){
-       url = 'https://www.googleapis.com/books/v1/volumes?q=+intitle:' +  titleInput +'&key=AIzaSyCfxVfRWs5eLZEwwiZemvp1iAwyAaHBHUQ'
-    } else if(titleInput == ""){
-       url = 'https://www.googleapis.com/books/v1/volumes?q=+inauthor:' +  authorInput +'&key=AIzaSyCfxVfRWs5eLZEwwiZemvp1iAwyAaHBHUQ'
-    }
-    
+  if (authorInput == "") {
+    url = 'https://www.googleapis.com/books/v1/volumes?q=+intitle:' + titleInput + '&key=AIzaSyCfxVfRWs5eLZEwwiZemvp1iAwyAaHBHUQ'
+  } else if (titleInput == "") {
+    url = 'https://www.googleapis.com/books/v1/volumes?q=+inauthor:' + authorInput + '&key=AIzaSyCfxVfRWs5eLZEwwiZemvp1iAwyAaHBHUQ'
+  }
 
-  
+
+
   console.log(url);
   fetch(url)
     .then(response => {
@@ -57,7 +56,7 @@ function getBook() {
         description.textContent = data.items[i].volumeInfo.description
         collapsible_header.appendChild(img)         //   <li>
         collapsible_header.appendChild(title)       //      <div>
-        collapsible_body.appendChild(description)   //           \          
+        collapsible_body.appendChild(description)   //                    
         list.appendChild(collapsible_header)        //        
         list.appendChild(collapsible_body)          //    
 
@@ -69,7 +68,6 @@ function getBook() {
       const error = document.createElement('p')
       if (err.code != undefined) {
         error.setAttribute('style', "color: red")
-
         error.innerText = err.message;
         colletion.appendChild(error)
       }
