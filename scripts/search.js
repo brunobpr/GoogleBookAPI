@@ -37,8 +37,10 @@ function getBooks() {
           button.setAttribute('class', 'material-icons')
           button.innerText = 'shop';         
           var info = "Title: " + data.items[i].volumeInfo.title
+          title = data.items[i].volumeInfo.title
           if (data.items[i].volumeInfo.authors != undefined){
             info = info + '\n Author:     ' + data.items[i].volumeInfo.authors[0];
+            author = data.items[i].volumeInfo.authors[0];
           } 
           if(data.items[i].volumeInfo.publisher != undefined){
             info = info + '\n Publisher:    ' + data.items[i].volumeInfo.publisher;
