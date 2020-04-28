@@ -9,7 +9,18 @@ function advancedForm() {
 }
 
 function getBook() {
-  var colletion = document.getElementById('books_collection')
+
+  var results = document.getElementById('results');
+
+  if (results.childNodes[0] != undefined) {
+    results.removeChild(results.childNodes[0])
+  }
+
+
+  const colletion = document.createElement('ul')
+  colletion.setAttribute('class', 'collection col s6 offset-s2')
+  results.appendChild(colletion)
+
   const titleInput = document.getElementById('title').value
   const authorInput = document.getElementById('author').value
   var url = ""
@@ -26,51 +37,69 @@ function getBook() {
 
   console.log(url);
   fetch(url)
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-
+  .then(response => {
+    return response.json()
+  })
+  .then(data => {
+    if (data.totalItems > 0) {
       for (i = 0; i < data.totalItems; i++) {
         const list = document.createElement('li')
-        const collapsible_header = document.createElement('div')
-        const collapsible_body = document.createElement('div')
-        const title = document.createElement('p')
-        const description = document.createElement('p')
+        const span = document.createElement('span')
+        const p = document.createElement('p')
         const img = document.createElement('img')
+        const a = document.createElement('a')
+        const button = document.createElement('i')
+
         list.setAttribute('class', 'collection-item avatar')
-        collapsible_header.setAttribute('class', 'collapsible-header')
-        collapsible_body.setAttribute('class', 'collapsible-body')
-        img.setAttribute('src', data.items[i].volumeInfo.imageLinks.smallThumbnail)
+        span.setAttribute('class', 'title')
+        if(data.items[i].volumeInfo.imageLinks != undefined){
+        img.setAttribute('src', data.items[i].volumeInfo.imageLinks.smallThumbnail)}
         img.setAttribute('class', 'circle')
-        img.setAttribute('style', 'position: absolute; padding-right: 25px; max-width:100px')
+        a.setAttribute('class', 'btn-floating btn-large waves-effect waves-light red')         
+        button.setAttribute('class', 'material-icons')
+        button.innerText = 'shop';         
         var info = "Title: " + data.items[i].volumeInfo.title
-
-        if (data.items[i].volumeInfo.authors != undefined) {
-          info = "Title: " + data.items[i].volumeInfo.title + '\n Author:     ' + data.items[i].volumeInfo.authors[0];
-        } else {
-          var info = "Title: " + data.items[i].volumeInfo.title
-
+        if (data.items[i].volumeInfo.authors != undefined){
+          info = info + '\n Author:     ' + data.items[i].volumeInfo.authors[0];
+        } 
+        if(data.items[i].volumeInfo.publisher != undefined){
+          info = info + '\n Publisher:    ' + data.items[i].volumeInfo.publisher;
+          publisher = data.items[i].volumeInfo.publisher;
         }
-        title.innerText = info
-        description.textContent = data.items[i].volumeInfo.description
-        collapsible_header.appendChild(img)         //   <li>
-        collapsible_header.appendChild(title)       //      <div>
-        collapsible_body.appendChild(description)   //                    
-        list.appendChild(collapsible_header)        //        
-        list.appendChild(collapsible_body)          //    
-
-
+        if(data.items[i].volumeInfo.categories != undefined){
+          info = info + '\n Category:    ' + data.items[i].volumeInfo.categories[0];
+        }
+        if(data.items[i].volumeInfo.publishedDate != undefined){
+          var date = data.items[i].volumeInfo.publishedDate
+          info = info + '\n Year:    ' + date.substring(0, 4);
+        }
+       a.setAttribute('style', 'margin-top: -80px')
+        a.setAttribute('href', 'https://www.amazon.co.uk/s?k='+title+" "+author+'&ref=nb_sb_noss_2')
+        a.setAttribute('target', '_blank')
+        p.innerText = info         
+        list.appendChild(img)      
+        list.appendChild(p)
+        p.appendChild(a)
         colletion.appendChild(list)
+        a.appendChild(button)
       }
-    })
-    .catch(err => {
+    } else { 
       const error = document.createElement('p')
-      if (err.code != undefined) {
-        error.setAttribute('style', "color: red")
-        error.innerText = err.message;
-        colletion.appendChild(error)
-      }
-    })
+      error.setAttribute('style', "color: white; text-align: center")
+      error.innerText = 'Please, try again! \n Your search returned 0 item! :(';
+      colletion.appendChild(error)
+    }
+    }
+  )
+  .catch(err => {
+    console.log(err)
+    const error = document.createElement('p')
+    if (err.code != undefined) {
+      error.setAttribute('style', "color: red")
+      error.innerText = err.message;
+      colletion.appendChild(error)
+    }
+
+  })
 }
 

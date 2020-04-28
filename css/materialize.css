@@ -3080,17 +3080,17 @@ td, th {
 
 .collection {
   margin: 0.5rem 0 1rem 0;
-  border: 1px solid #e0e0e0;
+  
   border-radius: 2px;
   overflow: hidden;
   position: relative;
+  
 }
 
 .collection .collection-item {
   background-color: #fff;
   line-height: 1.5rem;
-  
-  margin-bottom: 30px;
+  padding: 20px;
 }
 
 .collection .collection-item.avatar {
@@ -3098,6 +3098,7 @@ td, th {
   padding-left: 72px;
   position: relative;
   border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
 }
 
 .collection .collection-item.avatar:not(.circle-clipper) > .circle,
@@ -3109,15 +3110,22 @@ td, th {
   left: 0px;
   display: inline-block;
   vertical-align: middle;
+  margin-left: 10px;
+  position: absolute;
+  padding-right: 25px;
+   max-width:100px;
 }
 
 .collection .collection-item.avatar i.circle {
   font-size: 18px;
-  line-height: 42px;
-  padding-bottom: 20px;
+  line-height: 62px;
+  position: absolute;
+   padding-right: 25px;
+    max-width:100px;
   color: #fff;
   background-color: #999;
   text-align: center;
+  min-height: 500px;
 }
 
 .collection .collection-item.avatar .title {
@@ -3125,7 +3133,8 @@ td, th {
 }
 
 .collection .collection-item.avatar p {
-  margin: 0;
+  margin-left: 20px;
+  margin-top: 0px;
 }
 
 .collection .collection-item.avatar .secondary-content {
@@ -5233,6 +5242,7 @@ small {
 .btn-flat {
   font-size: 14px;
   outline: 0;
+  margin-left: 400px;
 }
 
 .btn i, .btn-large i, .btn-small i,
@@ -5242,6 +5252,7 @@ small {
 .btn-flat i {
   font-size: 1.3rem;
   line-height: inherit;
+  
 }
 
 .btn:focus, .btn-large:focus, .btn-small:focus,
@@ -8881,7 +8892,7 @@ input[type=range]::-ms-thumb {
 }
 
 .text-primary {
-  color: white;
+  color: black;
 }
 
 /* Clock Digital Display */
