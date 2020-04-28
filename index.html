@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+<!--BRUNO PEREIRA RIBEIRO - 2017138-->
 <html lang="en">
 
 <head>
+    <!--THIS WEBSITE USES THE GOOGLE BOOK API-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Bruno Ribeiro - 2017138</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700"rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/materialize.css" rel="stylesheet" />
@@ -15,29 +15,28 @@
     <script src="scripts/search.js"></script>
     <script src="scripts/advancedSearch.js" type="text/JavaScript"></script>
     <script src="scripts/materialize.js" type="text/JavaScript"></script>
-    
+
 </head>
 
-<body >
+<body>
     <script>
+        //Initializing MaterializeCSS
         M.AutoInit();
     </script>
-     <nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo center"> <i class="material-icons">local_library</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="./index.html" >Home</a></li>
-        <li><a href="https://developers.google.com/books/" target="_blank">Google Books API</a></li>
-        <li><a href="https://github.com/brunobpr/GoogleBookAPI" target="_blank">GitHub</a></li>
-
-      </ul>
-    </div>
-  </nav>
-        <div class="row" id="header">
-          BPR Books
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center"> <i class="material-icons">local_library</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="https://developers.google.com/books/" target="_blank">Google Books API</a></li>
+                <li><a href="https://github.com/brunobpr/GoogleBookAPI" target="_blank">GitHub</a></li>
+            </ul>
         </div>
-  
-    
+    </nav>
+    <div class="row" id="header">
+        BPR Books
+    </div>
+    <!--SIMPLE FORM IS DISPLAYED ONLY WHEN THE CHECKBOX IS NOT CHECKED-->
     <div class="row" id="form">
         <div id="simpleform">
             <form style="margin-bottom: -200px; padding-bottom: -200px" class="col s10 offset-s2"
@@ -49,6 +48,7 @@
                 </div>
             </form>
         </div>
+        <!--ADVANCED FORM IS DISPLAYED ONLY WHEN THE CHECKBOX IS CHECKED-->
         <form id="advancedform" style="visibility:hidden" class="col s10 offset-s2" onsubmit="getBook(); return false;">
             <div class="input-field col s5">
                 <input id="title" type="text" class="validate white-text  ">
@@ -60,18 +60,17 @@
                 <label for="author">Author</label>
             </div>
         </form>
+        <!--CHECKBOX TO CHANGE THE TYPE OF FORMS-->
         <label class="col s3 offset-s2">
             <input type="checkbox" class="filled-in" onclick="advancedForm()" id="checkBox" />
             <span>Advanced Search</span>
         </label>
     </div>
-    
+    <!--THIS IS WHERE THE FETCH REQUEST IS SHOW-->
     <div class="row" id="results"></div>
-
     <script>
         M.AutoInit();
     </script>
- 
 </body>
 
 </html>
